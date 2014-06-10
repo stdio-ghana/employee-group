@@ -1,1 +1,22 @@
-5T
+Functional requirements
+Users of the system should be able to login and logout of the system
+It should be able to generate a timestamp that will indicate the times that employees logged in and out of the system.
+The system should pop up a message indicating the time the employee reported and left the hospital.
+The system should manage (i.e add, delete and edit ) the profile of employees.
+Employees should be able to view their profile
+
+Non-functional requirements
+The system should have a user-friendly interface
+The system should be secured by applying the rule of least priviledge.
+The system should be robust that is able to recovery from the errors.
+security is associated with user authentication.
+
+Actors 
+Administrator
+Doctors
+Nurses
+
+Technologies
+python 
+MySQL Database
+
