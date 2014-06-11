@@ -1,0 +1,25 @@
+
+1. Login & Logout 
+Input: an employee requires an id and a pin to log in to and out of the system
+Expected Results: a pop up message indicating the status of an employee's login or logout information
+
+2. Time Log
+Input: system time on the host machine and the employee id
+Expected Results: a log of employee's login against logout time
+
+3. Add new employee
+Input: an admin log in and add a new employee providing employee details
+Expected Results: a new employee profile is created and an id and pin assigned
+
+4. Pin change
+Input: an id, old pin and new pin
+Expected Results: notification of pin change
+
+5. View profile
+Input: an employee needs an id and a pin to view his/her profile
+Expected Results: a display of the employee's profile
+
+6. Unsuccessful login
+Input: id and pin
+Execution condition: id and pin should either be non-existent, an id-pin mismatch or an empty input
+Expected Results: display of error message 
