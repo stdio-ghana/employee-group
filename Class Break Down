@@ -10,6 +10,7 @@ Class Employee			         	      Subclass Administrator
  - Login			                
  - Logout			                
  - View profile			          
+ 
 --------------------------------------------------------------------------------------------------
 
 Subclass Doctor 		          	    Subclass Nurse
