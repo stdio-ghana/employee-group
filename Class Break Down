@@ -10,7 +10,7 @@ Class Employee			         	      Subclass Administrator
  - Login			                
  - Logout			                
  - View profile			          
---------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 
 Subclass Doctor 		          	    Subclass Nurse
 *Attributes				              *Attributes
@@ -19,6 +19,7 @@ Subclass Doctor 		          	    Subclass Nurse
 *Methods				              *Methods
  - Prescribe drugs			             - Take vitals
 
+---------------------------------------------------------------------------------------------------
 
 Class break down code(sample)
 from time import localtime
