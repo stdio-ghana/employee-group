@@ -1,29 +1,87 @@
-Class Employee			          |	      Subclass Administrator
-*Attributes			              |	      *Attribute
- - Name				                |	      - System password
- - Date of birth		          |	
- - Gender			                |	      *Methods
- - Marital_status		          |	    - View all profiles
- - Residential_address		    |	    - Make changes to profiles
- - Email_address		          |	    - Add employees
- - Telephone			            |
- - Salary			                |
- - Next_Of_Kin		        	  |
- - Qualification		          |
- - ID				                  |
- - Pin				                |   
-			                      	|
-*Methods		              	  |
- - Login			                |
- - Logout			                |
- - View profile			          |
+Class Employee			         	      Subclass Administrator
+*Attributes			            	      *Attribute
+ - Name				                       - System password
+ - ID				                       *Methods
+ - Pin		          	       			- View all profiles
+ - work_status		               	                - Make changes to profiles
+ - Telephone or Mobile	                        	- Add employee
+			                      	
+*Methods		              	  
+ - Login			                
+ - Logout			                
+ - View profile			          
 --------------------------------------------------------------------------
 
-Subclass Doctor 		          |	    Subclass Nurse
-*Attributes				                  *Attributes
+Subclass Doctor 		          	    Subclass Nurse
+*Attributes				              *Attributes
  - Speciality
- - 
 
-*Methods				                    *Methods
+*Methods				              *Methods
  - Prescribe drugs			             - Take vitals
- - 					                         - Dispense drugs
+
+
+Class break down code(sample)
+from time import localtime
+
+class Employee:
+    #Common base for all employees
+    empcount = 0
+    
+    #Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status)
+        self.name = name
+        self.id = id
+        self.pin = pin
+        self.work_status = work_status
+        empcount += 1
+        
+    #Create login method to allow employees sign in
+    def Login(self, id, pin):
+        pass
+    
+    #Create logout method to allow employees sign out
+    def Logout(self, id, pin):
+        pass
+    
+    #Create method to allow employees acces to view profiles
+    def view_profile(self, id, pin):
+        print("ID No.:", self.id, "\nName:", self.name, "\nWork Status:", self.work_status,)
+        
+
+class Administrator(Employee):
+    #Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status, system_password):
+        Employee.__init__(self, name, id, pin, work_status)
+        self.system_password = system_password
+        
+    #Create method to allow administrator access to view all employee profiles
+    def view_all_profiles(self, system_password):
+        pass
+    
+    #Create method to allow adding employees 
+    def add_employee(self, system_password):
+        pass
+    
+    
+    #Create method to edit employee profiles
+    def edit_employee_profile(self, system_password):
+        pass
+    
+class Doctor(Employee):
+    ##Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status, speciality):
+        Employee.__init__(self, name, id, pin, work_status)
+        self.speciality = speciality
+        
+
+class Nurse(Employee):
+    ##Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status):
+        Employee.__init__(self, name, id, pin, work_status)
+        
+    
+    
+    
+    
+    
+
