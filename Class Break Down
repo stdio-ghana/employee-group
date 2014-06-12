@@ -1,0 +1,29 @@
+Class Employee			          |	      Subclass Administrator
+*Attributes			              |	      *Attribute
+ - Name				                |	      - System password
+ - Date of birth		          |	
+ - Gender			                |	      *Methods
+ - Marital_status		          |	    - View all profiles
+ - Residential_address		    |	    - Make changes to profiles
+ - Email_address		          |	    - Add employees
+ - Telephone			            |
+ - Salary			                |
+ - Next_Of_Kin		        	  |
+ - Qualification		          |
+ - ID				                  |
+ - Pin				                |   
+			                      	|
+*Methods		              	  |
+ - Login			                |
+ - Logout			                |
+ - View profile			          |
+--------------------------------------------------------------------------
+
+Subclass Doctor 		          |	    Subclass Nurse
+*Attributes				                  *Attributes
+ - Speciality
+ - 
+
+*Methods				                    *Methods
+ - Prescribe drugs			             - Take vitals
+ - 					                         - Dispense drugs
