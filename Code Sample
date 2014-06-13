@@ -1,0 +1,149 @@
+__author__ = 'stdio'
+
+from time import localtime
+import sys
+from random import randint
+
+
+class Employee:
+    #Common base for all employees
+    emp_counter = 0
+
+    #Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status):
+        self.name = name
+        self.id = id
+        self.pin = pin
+        self.work_status = work_status
+        Employee.emp_counter += 1
+
+
+
+    #Create login method to allow employees sign in
+    def login(self):
+        id = input("Please enter your ID: ")
+        pin = input("Please enter your pin: ")
+        if self.id == id and self.pin == pin:
+            your_time = localtime()
+            exact_time = str(your_time.tm_hour) + ":" + str(your_time.tm_min) + ":" + str(your_time.tm_sec)
+            print("You've logged in at exactly", exact_time)
+        else:
+            print("Wrong ID/Pin entered!!\nAccess Denied")
+
+
+
+    #Create logout method to allow employees sign out
+    def logout(self,a):
+        id = input("Please enter your ID: ")
+        pin = input("Please enter your pin: ")
+        if self.id == id and self.pin == pin:
+            your_time = localtime()
+            exact_time = str(your_time.tm_hour) + ":" + str(your_time.tm_min) + ":" + str(your_time.tm_sec)
+            print("You've logged out at exactly", exact_time)
+        else:
+             print("Wrong ID/Pin entered!!\nAccess Denied")
+
+            
+
+    #Create method to allow employees acces to view profiles
+    def viewProfile(self):
+        id = input("Please enter your ID: ")
+        pin = input("Please enter your pin: ")
+        if self.id == id and self.pin == pin:
+            print("ID No.:", self.id, "\nName:", self.name, "\nWork Status:", self.work_status)
+        else:
+             print("Wrong ID/Pin entered!!\nAccess Denied")
+
+
+class Administrator(Employee):
+    #Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status, system_password):
+        Employee.__init__(self, name, id, pin, work_status)
+        self.system_password = system_password
+
+    #Create method to allow administrator access to view all employee profiles
+    def viewAllProfiles(self, employee_list):
+        for i in employee_list:
+            print("ID No.:", i.id, "\nName:", i.name, "\nWork Status:", i.work_statusName)
+            
+
+    #Create method to allow adding employees
+    def addEmployee(self, employee_list):
+        print("Access Granted.\nAnswer the following questions to add an employee\n")
+        name = input("Enter the employee's name: ")
+        id = generateEmployeeID()
+        pin = generateEmployeePin()
+        workStatus = "INSERVICE"
+        speciality = input("Please enter the speciality if it's a doctor otherwise enter none:")
+        if speciality == "Doctor"
+            emp = Employee(name, id, pin, workStatus, speciality)
+        else:
+            emp = Employee(name, id, pin, workStatus)
+        employee_list.append(emp)
+        print("Employee has been successfully added!!!")
+
+
+    #Create method to edit employee profiles
+    def edit_employee_profile(self, system_password):
+        pass
+
+class Doctor(Employee):
+    ##Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status, speciality):
+        Employee.__init__(self, name, id, pin, work_status)
+        self.speciality = speciality
+
+
+class Nurse(Employee):
+    ##Create constructor to initialise objects
+    def __init__(self, name, id, pin, work_status):
+        Employee.__init__(self, name, id, pin, work_status)
+
+    #Create method for Nurse to input patient vitals
+    def takeVital(self):
+        vital = input("Enter patient vital to send to patient folder")
+        print("Patient vital entered is", vital)
+
+
+#Create method to generate pin
+def generateEmployeeID():
+    the_type = input("Please the employee type")
+    if the_type == "Doctor":
+        baseID = "DOC/"
+        numb = input("Please enter last three pin number to add to base pin: ")
+        id = baseID + numb
+        return id
+    else:
+        baseID = "NUR/"
+        numb = input("Please enter last three pin number to add to base pin: ")
+        id = baseID + numb
+        return id
+
+def generateEmployeeP1n():
+    the_type = input("Please the employee type")
+    if the_type == "Doctor":
+        pin = randint(50000, 99999)
+        return pin
+    else:
+        pin = randint(10000, 49999) 
+        return pin
+
+emp1 = Doctor("Andy Alorwu", "DOC/123", 56789, "INSERVICE", "GYNAECOLOGIST")
+emp2 = Nurse("Dennis Opoku Boadu", "NUR/256", 35421, "INSERVICE")
+emp3 = Administrator("Samantha Tetteh", "ADMIN/987", 82459, "INSERVICE", "ADMINh0sp1t@l")
+
+employeeList = [emp1, emp2, emp3]
+
+while True:
+    try:
+        ans = input("Welcome to Office\nPlease select an option\n1. Login" +
+                    "\t\t\t2. View Profiles\t\t\t3. Logout\t\t\t4. Administrator")
+        if ans == 1:
+            a = input("What is your employee number: ")
+            login()
+        else:
+            self.logout()
+
+
+
+
