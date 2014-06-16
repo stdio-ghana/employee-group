@@ -1,4 +1,4 @@
-_author__ = 'stdio'
+__author__ = 'stdio'
 
 from time import localtime
 import sys
@@ -28,7 +28,8 @@ class Employee:
             exact_time = str(your_time.tm_hour) + ":" + str(your_time.tm_min) + ":" + str(your_time.tm_sec)
             print("You've logged in at exactly", exact_time, "\n")
         else:
-            print("\nWrong ID/Pin entered!!\nAccess Denied\n")
+            print("\nWrong ID/Pin entered!!\n"
+                  "Access Denied\n")
 
 
 
@@ -41,7 +42,8 @@ class Employee:
             exact_time = str(your_time.tm_hour) + ":" + str(your_time.tm_min) + ":" + str(your_time.tm_sec)
             print("You've logged out at exactly", exact_time, "\n")
         else:
-            print("\nWrong ID/Pin entered!!\nAccess Denied\n")
+            print("\nWrong ID/Pin entered!!\n"
+                  "Access Denied\n")
 
 
 
@@ -50,7 +52,9 @@ class Employee:
         id = input("Please enter your ID: ")
         pin = int(input("Please enter your pin: "))
         if self.id == id and self.pin == pin:
-            print("\nID No.:", self.id, "\nName:", self.name, "\nWork Status:", self.work_status, "\n")
+            print("\nID No.:", self.id, "\n"
+                  "Name:", self.name, "\n"
+                  "Work Status:", self.work_status, "\n")
         else:
             print("\nWrong ID/Pin entered!!\nAccess Denied\n")
 
@@ -66,23 +70,26 @@ class Administrator(Employee):
         system_passwd = input("\nAccess Granted!!!\nPlease enter the system password: ")
         if system_passwd == self.system_password:
             for i in employee_list:
-                print("ID No.:", i.id, "\nName:", i.name, "\nWork Status:", i.work_status, "\n")
+                print("\nID No.:", i.id, "\nName:", i.name, "\nWork Status:", i.work_status, "\n")
 
 
     #Create method to allow adding employees
     def addEmployee(self, employee_list):
-        print("\nAccess Granted.\nAnswer the following questions to add an employee\n")
-        name = input("Enter the employee's name: ")
-        id = generateEmployeeID()
-        pin = generateEmployeePin()
-        workStatus = "INSERVICE"
-        speciality = input("Please enter the speciality if it's a doctor otherwise enter none: ")
-        if speciality == "Doctor":
-            emp = Employee(name, id, pin, workStatus, speciality)
+        system_passwd = input("Please enter the system password: ")
+        if system_passwd == self.system_password:
+            name = input("Please enter the name of the employee: ")
+            id = generateEmployeeID()
+            pin = generateEmployeePin()
+            workStatus = "INSERVICE"
+            speciality = input("Please enter the speciality if it's a doctor otherwise enter none: ")
+            if speciality == "Doctor":
+                emp = Employee(name, id, pin, workStatus, speciality)
+            else:
+                emp = Employee(name, id, pin, workStatus)
+            employee_list.append(emp)
+            print("Employee has been successfully added!!!\n")
         else:
-            emp = Employee(name, id, pin, workStatus)
-        employee_list.append(emp)
-        print("Employee has been successfully added!!!")
+            print("\nWrong ID/Pin entered!!\nAccess Denied\n")
 
 
     #Create method to edit employee profiles
@@ -109,7 +116,7 @@ class Nurse(Employee):
 
 #Create method to generate pin
 def generateEmployeeID():
-    the_type = input("Please the employee type")
+    the_type = input("Please the employee type: ")
     if the_type == "Doctor":
         baseID = "DOC/"
         numb = input("Please enter last three pin number to add to base pin: ")
@@ -122,7 +129,7 @@ def generateEmployeeID():
         return id
 
 def generateEmployeePin():
-    the_type = input("Please the employee type")
+    the_type = input("Please the employee type: ")
     if the_type == "Doctor":
         pin = randint(50000, 99999)
         return pin
@@ -138,8 +145,10 @@ employeeList = [emp3, emp1, emp2]
 print(employeeList[1].id, employeeList[1].pin)
 
 while True:
-    ans = int(input("Welcome to Office\nPlease select an option\n1. Login" +
-                "\t\t\t2. View Profiles\t\t\t3. Logout\t\t\t4. Administrator\noption: "))
+    ans = int(input("Welcome to Office"
+                    "\nPlease select an option"
+                    "\n1. Login\t\t\t2. View Profiles\t\t\t3. Logout\t\t\t4. Administrator\n"
+                    "option: "))
     if ans == 1:
         a = int(input("What is your employee number: "))
         employeeList[a].login()
@@ -150,7 +159,8 @@ while True:
         continue
     elif ans == 3:
         a = int(input("What is your employee number: "))
-        islast = input("Are you the last employee? y/n")
+        islast = input("Are you the last employee? y/n\n"
+                       "Reply here: ")
         if islast == 'y':
             employeeList[a].logout()
             sys.exit(0)
@@ -159,7 +169,11 @@ while True:
         continue
     else:
         a = input("What is your employee number: ")
-        answ = int(input("Please select another option\n1. View All Profiles\n2. Edit Profiles\n3. Add Employee"))
+        answ = int(input("Please select another option\n"
+                         "1. View All Profiles\n"
+                         "2. Edit Profiles\n"
+                         "3. Add Employee\n"
+                         "Option: "))
         if answ == 1:
             employeeList[0].viewAllProfiles(employeeList)
         elif answ == 2:
