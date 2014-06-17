@@ -1,4 +1,4 @@
-__author__ = 'EmployeeProjectGroup'
+__author__ = 'EmployeeGroupProject'
 
 from time import localtime
 import sys
@@ -10,6 +10,7 @@ class Employee:
     #Common base for all employees
     emp_counter = 0
 
+
     #Create constructor to initialise objects
     def __init__(self, name, id, pin, work_status):
         self.name = name
@@ -19,10 +20,13 @@ class Employee:
         Employee.emp_counter += 1
 
 
+
     #Create login method to allow employees sign in
     def login(self):
+
         id = input("\nPlease enter your ID: ")
         pin = ""
+
         while True:
             try:
                 pin = int(input("\nPlease enter your pin: "))
@@ -30,6 +34,7 @@ class Employee:
             except ValueError:
                 print("\nPlease try again\n"
                       "Employee pins are numbers\n")
+
         if self.id == id and self.pin == pin:
             your_time = localtime()
             exact_time = str(your_time.tm_hour) + ":" + str(your_time.tm_min) + ":" + str(your_time.tm_sec)
@@ -39,10 +44,13 @@ class Employee:
                   "Access Denied\n")
 
 
+
     #Create logout method to allow employees sign out
     def logout(self):
+
         id = input("\nPlease enter your ID: ")
         pin = ""
+
         while True:
             try:
                 pin = int(input("\nPlease enter your pin: "))
@@ -50,6 +58,7 @@ class Employee:
             except ValueError:
                 print("\nPlease try again\n"
                       "Employee pins are numbers\n")
+
         if self.id == id and self.pin == pin:
             your_time = localtime()
             exact_time = str(your_time.tm_hour) + ":" + str(your_time.tm_min) + ":" + str(your_time.tm_sec)
@@ -59,10 +68,13 @@ class Employee:
                   "Access Denied\n")
 
 
+
     #Create method to allow employees acces to view profiles
     def viewProfile(self):
+
         id = input("\nPlease enter your ID: ")
         pin = ""
+
         while True:
             try:
                 pin = int(input("\nPlease enter your pin: "))
@@ -70,12 +82,15 @@ class Employee:
             except ValueError:
                 print("\nPlease try again\n"
                       "Employee pins are numbers\n")
+
         if self.id == id and self.pin == pin:
             print("\nID No.:", self.id, "\n"
                   "Name:", self.name, "\n"
                   "Work Status:", self.work_status, "\n")
         else:
             print("\nWrong ID/Pin entered!!\nAccess Denied\n")
+
+
 
 
 class Administrator(Employee):
@@ -86,10 +101,13 @@ class Administrator(Employee):
         self.system_password = system_password
 
 
+
     #Create method to allow administrator access to view all employee profiles
     def viewAllProfiles(self, employee_list):
+
         print("\nProfile List\n____________")
         a = 0
+
         for i in employee_list:
             if type(i) == "Doctor":
                 print("\nEmployee No: ", a, "\n"
@@ -105,23 +123,28 @@ class Administrator(Employee):
             a += 1
 
 
+
     #Create method to allow adding employees
     def addEmployee(self, employee_list):
+
         name = input("\nPlease enter the name of the employee: ")
         id = generateEmployeeID()
         pin = generateEmployeePin()
         workStatus = "INSERVICE"
         speciality = input("\nPlease enter the speciality if it's a doctor otherwise enter none: ")
+
         if speciality == "none":
             emp = Nurse(name, id, pin, workStatus)
         else:
             emp = Doctor(name, id, pin, workStatus, speciality)
+
         employee_list.append(emp)
         print("\nEmployee has been successfully added!!!\n")
 
 
     #Create method to edit employee profiles
     def editEmployeeProfile(self, employeeList):
+
         while True:
             try:
                 ans = int(input("\nPlease enter the employee's number: "))
@@ -135,6 +158,7 @@ class Administrator(Employee):
                                            "4. Work Status\n"
                                            "5. End editting employee profile\n\n"
                                            "Option: "))
+
                         if option == 1:
                             Str = input("\nThe employee's name is " + employeeList[ans].name + "\n" +
                                         "Enter new employee name:  ")
@@ -170,15 +194,18 @@ class Administrator(Employee):
                 continue
 
             break
+
         print("\nEmployee profiles have been successfully edited.\n")
 
 
 
 class Doctor(Employee):
+
     ##Create constructor to initialise objects
     def __init__(self, name, id, pin, work_status, speciality):
         Employee.__init__(self, name, id, pin, work_status)
         self.speciality = speciality
+
 
 
 
@@ -187,6 +214,8 @@ class Nurse(Employee):
     def __init__(self, name, id, pin, work_status):
         Employee.__init__(self, name, id, pin, work_status)
 
+
+
     #Create method for Nurse to input patient vitals
     def takeVital(self):
         vital = input("\nEnter patient vital to send to patient folder")
@@ -194,9 +223,12 @@ class Nurse(Employee):
 
 
 
+
 #Create method to generate employee id
 def generateEmployeeID():
+
     the_type = input("\nPlease the employee type: ")
+
     if the_type == "Doctor":
         baseID = "DOC/"
         numb = input("\nPlease enter last three pin number to add to base pin: ")
@@ -208,15 +240,23 @@ def generateEmployeeID():
         id = baseID + numb
         return id
 
+
+
+
 #Create method to generate employee pin
 def generateEmployeePin():
+
     the_type = input("\nPlease the employee type: ")
+
     if the_type == "Doctor" or the_type == "DOCTOR" or the_type == "doctor":
         pin = randint(50000, 99999)
         return pin
     else:
         pin = randint(10000, 49999)
         return pin
+
+
+
 
 #Create instances of employees already in the workplace
 emp1 = Doctor("Andy Alorwu", "DOC/123", 56789, "INSERVICE", "GYNAECOLOGIST")
@@ -225,23 +265,32 @@ emp3 = Administrator("Samantha Tetteh", "ADMIN/087", 82459, "INSERVICE", "ADMINh
 emp4 = Nurse("Eunice Agyei", "NUR/357", 86325, "INSERVICE")
 emp5 = Doctor("Anthony Alexis Adoasi", "DOC/489", 75684, "INERVICE", "NATUROPATHY")
 
+
+
 #Store instances created in employee list
 employeeList = [emp3, emp1, emp2, emp3, emp4]
+
+
 
 #Simulate the operation of employees
 while True:
     try:
         time_now = localtime()
+
         if time_now.tm_hour <= 9:
             print("\nWelcome to the Office!!\n")
+
         ans = int(input("\nWhat is your employee number: "))
+
         if ans >= len(employeeList):
             print("\nEmployee number is out of range!!\n"
                   "Try again\n")
             continue
+
         an = int(input("\nPlease select an option"
                        "\n1. Login\t\t\t2. View Profiles\t\t\t3. Logout\t\t\t4. Administrator\n\n"
                        "option: "))
+
         if an == 1:
             employeeList[ans].login()
             continue
@@ -251,6 +300,7 @@ while True:
         elif an == 3:
             islast = input("\nAre you the last employee? y/n\n"
                            "Reply here: ")
+
             if islast == 'y':
                 employeeList[ans].logout()
                 print("\nProcess shutting down.......")
@@ -261,8 +311,10 @@ while True:
         elif an == 4:
             while True:
                 system_passwd = input("\nPlease enter the system password: ")
+
                 if system_passwd == employeeList[ans].system_password:
                     print("\nACCESS GRANTED\n")
+
                     while True:
                         try:
                             answ = int(input("\nPlease select another option\n\n"
@@ -271,6 +323,7 @@ while True:
                                          "3. Add Employee\n"
                                          "4. End Administrator session\n\n"
                                          "Option: "))
+
                             if answ == 1:
                                 employeeList[ans].viewAllProfiles(employeeList)
                             elif answ == 2:
