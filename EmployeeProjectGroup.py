@@ -1,4 +1,4 @@
-__author__ = 'employeeProjectGroup'
+__author__ = 'stdio'
 
 from time import localtime
 import sys
@@ -21,11 +21,11 @@ class Employee:
 
     #Create login method to allow employees sign in
     def login(self):
-        id = input("Please enter your ID: ")
+        id = input("\nPlease enter your ID: ")
         pin = ""
         while True:
             try:
-                pin = int(input("Please enter your pin: "))
+                pin = int(input("\nPlease enter your pin: "))
                 break
             except ValueError:
                 print("\nPlease try again\n"
@@ -41,11 +41,11 @@ class Employee:
 
     #Create logout method to allow employees sign out
     def logout(self):
-        id = input("Please enter your ID: ")
+        id = input("\nPlease enter your ID: ")
         pin = ""
         while True:
             try:
-                pin = int(input("Please enter your pin: "))
+                pin = int(input("\nPlease enter your pin: "))
                 break
             except ValueError:
                 print("\nPlease try again\n"
@@ -61,11 +61,11 @@ class Employee:
 
     #Create method to allow employees acces to view profiles
     def viewProfile(self):
-        id = input("Please enter your ID: ")
+        id = input("\nPlease enter your ID: ")
         pin = ""
         while True:
             try:
-                pin = int(input("Please enter your pin: "))
+                pin = int(input("\nPlease enter your pin: "))
                 break
             except ValueError:
                 print("\nPlease try again\n"
@@ -88,48 +88,43 @@ class Administrator(Employee):
 
     #Create method to allow administrator access to view all employee profiles
     def viewAllProfiles(self, employee_list):
-        system_passwd = input("\nAccess Granted!!!\nPlease enter the system password: ")
-        if system_passwd == self.system_password:
-            a = 0
-            for i in employee_list:
-                if type(i) == "Doctor":
-                    print("\nEmployee No: ", a, "\n"
-                          "ID No.:", i.id, "\n"
-                          "Name:", i.name, "\n"
-                          "Work Status:", i.work_status, "\n"
-                          "Speciality: ", i.speciality)
-                else:
-                    print("\nEmployee No: ", a, "\n"
-                          "ID No.:", i.id, "\n"
-                          "Name:", i.name, "\n"
-                          "Work Status:", i.work_status, "\n")
-                a += 1
+        print("\nProfile List\n____________")
+        a = 0
+        for i in employee_list:
+            if type(i) == "Doctor":
+                print("\nEmployee No: ", a, "\n"
+                      "ID No.:", i.id, "\n"
+                      "Name:", i.name, "\n"
+                      "Work Status:", i.work_status, "\n"
+                      "Speciality: ", i.speciality)
+            else:
+                print("\nEmployee No: ", a, "\n"
+                      "ID No.:", i.id, "\n"
+                      "Name:", i.name, "\n"
+                      "Work Status:", i.work_status, "\n")
+            a += 1
 
 
     #Create method to allow adding employees
     def addEmployee(self, employee_list):
-        system_passwd = input("Please enter the system password: ")
-        if system_passwd == self.system_password:
-            name = input("Please enter the name of the employee: ")
-            id = generateEmployeeID()
-            pin = generateEmployeePin()
-            workStatus = "INSERVICE"
-            speciality = input("Please enter the speciality if it's a doctor otherwise enter none: ")
-            if speciality == "none":
-                emp = Nurse(name, id, pin, workStatus)
-            else:
-                emp = Doctor(name, id, pin, workStatus, speciality)
-            employee_list.append(emp)
-            print("\nEmployee has been successfully added!!!\n")
+        name = input("\nPlease enter the name of the employee: ")
+        id = generateEmployeeID()
+        pin = generateEmployeePin()
+        workStatus = "INSERVICE"
+        speciality = input("\nPlease enter the speciality if it's a doctor otherwise enter none: ")
+        if speciality == "none":
+            emp = Nurse(name, id, pin, workStatus)
         else:
-            print("\nWrong ID/Pin entered!!\nAccess Denied\n")
+            emp = Doctor(name, id, pin, workStatus, speciality)
+        employee_list.append(emp)
+        print("\nEmployee has been successfully added!!!\n")
 
 
     #Create method to edit employee profiles
     def editEmployeeProfile(self, employeeList):
         while True:
             try:
-                ans = int(input("\nPlease enter the employee number: "))
+                ans = int(input("\nPlease enter the employee's number: "))
 
                 while True:
                     try:
@@ -194,28 +189,28 @@ class Nurse(Employee):
 
     #Create method for Nurse to input patient vitals
     def takeVital(self):
-        vital = input("Enter patient vital to send to patient folder")
-        print("Patient vital entered is", vital)
+        vital = input("\nEnter patient vital to send to patient folder")
+        print("\nPatient vital entered is", vital)
 
 
 
 #Create method to generate employee id
 def generateEmployeeID():
-    the_type = input("Please the employee type: ")
+    the_type = input("\nPlease the employee type: ")
     if the_type == "Doctor":
         baseID = "DOC/"
-        numb = input("Please enter last three pin number to add to base pin: ")
+        numb = input("\nPlease enter last three pin number to add to base pin: ")
         id = baseID + numb
         return id
     else:
         baseID = "NUR/"
-        numb = input("Please enter last three pin number to add to base pin: ")
+        numb = input("\nPlease enter last three pin number to add to base pin: ")
         id = baseID + numb
         return id
 
 #Create method to generate employee pin
 def generateEmployeePin():
-    the_type = input("Please the employee type: ")
+    the_type = input("\nPlease the employee type: ")
     if the_type == "Doctor" or the_type == "DOCTOR" or the_type == "doctor":
         pin = randint(50000, 99999)
         return pin
@@ -236,64 +231,71 @@ employeeList = [emp3, emp1, emp2, emp3, emp4]
 #Simulate the operation of employees
 while True:
     try:
-        ans = int(input("Welcome to Office"
-                        "\nPlease select an option"
-                        "\n1. Login\t\t\t2. View Profiles\t\t\t3. Logout\t\t\t4. Administrator\n"
-                        "option: "))
-        if ans == 1:
-            a = int(input("What is your employee number: "))
-            employeeList[a].login()
+        time_now = localtime()
+        if time_now.tm_hour <= 9:
+            print("\nWelcome to the Office!!\n")
+        ans = int(input("\nWhat is your employee number: "))
+        if ans >= len(employeeList):
+            print("\nEmployee number is out of range!!\n"
+                  "Try again\n")
             continue
-        elif ans == 2:
-            a = int(input("What is your employee number: "))
-            employeeList[a].viewProfile()
+        an = int(input("\nPlease select an option"
+                       "\n1. Login\t\t\t2. View Profiles\t\t\t3. Logout\t\t\t4. Administrator\n\n"
+                       "option: "))
+        if an == 1:
+            employeeList[ans].login()
             continue
-        elif ans == 3:
-            a = int(input("What is your employee number: "))
-            islast = input("Are you the last employee? y/n\n"
+        elif an == 2:
+            employeeList[ans].viewProfile()
+            continue
+        elif an == 3:
+            islast = input("\nAre you the last employee? y/n\n"
                            "Reply here: ")
             if islast == 'y':
-                employeeList[a].logout()
-                print("Process shutting down.......")
+                employeeList[ans].logout()
+                print("\nProcess shutting down.......")
                 sys.exit(0)
             else:
-                employeeList[a].logout()
+                employeeList[ans].logout()
                 continue
-        elif ans == 4:
+        elif an == 4:
             while True:
-                try:
-                    a = int(input("\nWhat is your employee number: "))
-                    break
-                except ValueError:
-                    print("Please try again and enter a correct employee number.")
+                system_passwd = input("\nPlease enter the system password: ")
+                if system_passwd == employeeList[ans].system_password:
+                    print("\nACCESS GRANTED\n")
+                    while True:
+                        try:
+                            answ = int(input("\nPlease select another option\n\n"
+                                         "1. View All Profiles\n"
+                                         "2. Edit Profiles\n"
+                                         "3. Add Employee\n"
+                                         "4. End Administrator session\n\n"
+                                         "Option: "))
+                            if answ == 1:
+                                employeeList[ans].viewAllProfiles(employeeList)
+                            elif answ == 2:
+                                employeeList[ans].editEmployeeProfile(employeeList)
+                            elif answ == 3:
+                                employeeList[ans].addEmployee(employeeList)
+                            elif answ == 4:
+                                print("\nExiting Administrator mode.......\n")
+                                break
+                            else:
+                                print("\nPlease try again and enter a number in range.\n")
+                                continue
+                        except ValueError:
+                            print("\nPlease try again and enter a correct number.")
+                            continue
+                else:
+                    print("\nACCESS DENIED!!\n")
                     continue
-            while True:
-                try:
-                    answ = int(input("\nPlease select another option\n\n"
-                                     "1. View All Profiles\n"
-                                     "2. Edit Profiles\n"
-                                     "3. Add Employee\n"
-                                     "4. End Administrator session\n\n"
-                                     "Option: "))
-                    if answ == 1:
-                        employeeList[0].viewAllProfiles(employeeList)
-                    elif answ == 2:
-                        employeeList[0].editEmployeeProfile(employeeList)
-                    elif ans == 3:
-                        employeeList[0].addEmployee(employeeList)
-                    elif ans == 4:
-                        break
-                    else:
-                        print("\nPlease try again and enter a number in range.\n")
-                        continue
-                except ValueError:
-                    print("\nPlease try again and enter a correct number.")
-                    continue
+                break
         else:
             print("\nPlease try again and enter a number in range\n")
             continue
     except ValueError:
         print("\nPlease try again and select an option in the list.\n")
         continue
+
 
 
