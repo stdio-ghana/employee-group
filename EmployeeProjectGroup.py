@@ -1,4 +1,4 @@
-__author__ = 'stdio'
+__author__ = 'EmployeeProjectGroup'
 
 from time import localtime
 import sys
