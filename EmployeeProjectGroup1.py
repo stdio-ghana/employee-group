@@ -267,28 +267,28 @@ class Administrator(Employee):
                         detail = datalist[index]
                         #Edit employee profile based on the option selected
                         if option == 1:
-                                    newName = input("\nThe employee's name is " + detail[16:46] + "\n" +
-                                                    "Enter new employee name: ")
-                                    newName = newName.upper()
-                                    detail = detail[:16] + newName + detail[46:]
-                                    print("\nEmployee name has been successfully changed to" + newName +
-                                          "Thank you\n")
-                                    datalist[index] = detail
+                            newName = input("\nThe employee's name is " + detail[16:46] + "\n" +
+                                            "Enter new employee name: ")
+                            newName = newName.upper()
+                            detail = detail[:16] + newName + detail[46:]
+                            print("\nEmployee name has been successfully changed to" + newName +
+                                  "Thank you\n")
+                            datalist[index] = detail
                         elif option == 2:
-                                    print("The employee's pin is " + detail[9:14])
-                                    newPin = generateEmployeePin()
-                                    print("\nEmployee pin has been successfully changed to" + newPin +
-                                          "Thank you\n")
-                                    detail = detail[:9] + newPin + detail[14:]
-                                    datalist[index] = detail
+                            print("The employee's pin is " + detail[9:14])
+                            newPin = generateEmployeePin()
+                            print("\nEmployee pin has been successfully changed to" + newPin +
+                                  "Thank you\n")
+                            detail = detail[:9] + newPin + detail[14:]
+                            datalist[index] = detail
                         elif option == 3:
-                                    newWorkStatus = input("The employee's work status is " + detail[48:63] + "\n" +
-                                                      "Enter new work Status: ")
-                                    newWorkStatus = newWorkStatus.upper()
-                                    print("\nEmployee work status has been successfully changed to" + newWorkStatus +
-                                          "Thank you!!\n")
-                                    detail = detail[:48] + newWorkStatus + detail[63:]
-                                    datalist[index] = detail
+                            newWorkStatus = input("The employee's work status is " + detail[48:63] + "\n" +
+                                                  "Enter new work Status: ")
+                            newWorkStatus = newWorkStatus.upper()
+                            print("\nEmployee work status has been successfully changed to" + newWorkStatus +
+                                  "Thank you!!\n")
+                            detail = detail[:48] + newWorkStatus + detail[63:]
+                            datalist[index] = detail
                         elif option == 4:
                             break
                         else:
@@ -398,7 +398,7 @@ def generateEmployeePin():
 
 systemPassword = "ADMIN/h0sp1t@l"
 
- 
+
 # #Create instances of employees already in the workplace
 # emp1 = Doctor("ANDY ALORWU", "DOC/123", 56789, "INSERVICE", "GYNAECOLOGIST")
 # emp2 = Nurse("DENNIS OPOKU BOADU", "NUR/256", 35421, "INSERVICE")
