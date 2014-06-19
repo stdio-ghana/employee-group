@@ -4,10 +4,8 @@ that employees logged in and out of the system.
 The system should add the profile of new employees and employees should be able to view their profile
 
 Non-functional requirements
-The system should have a user-friendly interface
-The system should be secured by applying the rule of least priviledge.
 The system should be robust that is able to recovery from errors.
-Security is associated with user authentication.
+Security is ensured with user authentication and authorisation.
 
 Actors Involved
 Administrator
