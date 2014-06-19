@@ -1,4 +1,4 @@
-
+TEST CASES
 1. Login & Logout 
 Input: an employee requires an id and a pin to log in to and out of the system
 Expected Results: a pop up message indicating the status of an employee's login or logout information
