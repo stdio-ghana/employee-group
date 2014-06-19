@@ -26,9 +26,9 @@ class Employee:
         while True:
             try:
                 opt = input("Do you want to login? (y/n): ")
-                if opt == "n":
+                if opt == "n" or "N":
                     break
-                elif opt == 'y':
+                elif opt == "y" or "Y":
 
                     #Create variables to hold id and pin
                     id = input("\nPlease enter your ID: ")
@@ -105,9 +105,9 @@ class Employee:
         while True:
             try:
                 opt = input("Do you want to logout? (y/n): ")
-                if opt == "n":
+                if opt == "n" or "N":
                     break
-                elif opt == 'y':
+                elif opt == 'y' or "Y":
                     #Create variables to hold id and pin
                     id = input("\nPlease enter your ID: ")
                     pin = input("Please enter you pin: ")
@@ -495,17 +495,11 @@ def generateEmployeePin(the_type):
 systemPassword = "ADMIN/h0sp1t@l"
 
 
-# #Create instances of employees already in the workplace
+
 emp1 = Employee("ANDY ALORWU", "DOC/123", 56789, "INSERVICE")
-# emp2 = Nurse("DENNIS OPOKU BOADU", "NUR/256", 35421, "INSERVICE")
 emp3 = Administrator("SAMANTHA TETTEH", "ADM/087", 82459, "INSERVICE", "ADMINh0sp1t@l")
-# emp4 = Nurse("EUNICE AGYEI", "NUR/357", 86325, "INSERVICE")
-# emp5 = Doctor("ANTHONY ALEXIS ADOASI", "DOC/489", 75684, "INERVICE", "NATUROPATHY")
 
 
-
-# #Store instances created in employee list
-# employeeList = [emp3, emp1, emp2, emp4, emp5]
 
 print("\n#############################################################################################\n"
       "\t\t\t\t\t\t\tERASDA GROUP OF COMPANIES HOSPITAL\t\t\t\t\t\t\n"
