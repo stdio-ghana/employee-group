@@ -4,10 +4,12 @@ that employees logged in and out of the system.
 The system should add the profile of new employees and employees should be able to view their profile
 
 Non-functional requirements
-The system should be robust that is able to recovery from errors.
-Security is ensured with user authentication and authorisation.
+Ensure system security through user authentication and authorization
+Speed
+Usability
 
-Actors Involved
+
+Actors
 Administrator
 Doctor
 Nurse
