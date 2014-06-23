@@ -26,9 +26,9 @@ class Employee:
         while True:
             try:
                 opt = input("Do you want to login? (y/n): ")
-                if opt == "n":
+                if opt == 'n' or 'N':
                     break
-                elif opt == 'y':
+                elif opt == 'y' or 'Y':
 
                     #Create variables to hold id and pin
                     id = input("\nPlease enter your ID: ")
